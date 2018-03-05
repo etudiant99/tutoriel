@@ -101,3 +101,68 @@ footer {
 .post {
     background-color: #F5F5F5;
 }
+.site-branding {
+    float: left;
+    line-height: 1;
+}
+.twp-site-branding {
+    position: absolute;
+    padding: 15px;
+    top: 0;
+    height: 140px;
+    background-position: bottom;
+    background-size: cover;
+    display: table;
+    max-width: 340px;
+}
+
+.twp-site-branding:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 0;
+    overflow: visible;
+    width: 100%;
+    height: 140px;
+    background: #ffbb3f;
+    z-index: 1;
+    -webkit-transform: skewY(-7deg);
+    -moz-transform: skewY(-7deg);
+    -ms-transform: skewY(-7deg);
+    -o-transform: skewY(-7deg);
+    transform: skewY(-7deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: initial;
+}
+
+.branding-center {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+}
+
+.site-branding .site-title {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.site-branding .site-description {
+    margin-bottom: 0;
+}
+
+.site-branding a[rel="home"] {
+    color: inherit;
+    font-family: "Poppins", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+}
+.alt-bgcolor {
+    background: #ffbb3f;
+    color: #fff;
+}
+
+svg .alt-bgcolor {
+    fill: #ffbb3f;
+}

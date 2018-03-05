@@ -27,11 +27,32 @@
 
     <div class="header">
     	<div class="container">
+                <div class="site-branding">
+                    <div class="twp-site-branding alt-bgcolor">
+                        <div class="branding-center">
+                            <?php
+                            if (is_front_page() && is_home()) : ?>
+                                <span class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>"
+                                                            rel="home"><?php bloginfo('name'); ?></a></span>
+                            <?php else : ?>
+                                <span class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>"
+                                                            rel="home"><?php bloginfo('name'); ?></a></span>
+                                <?php
+                            endif;
+                            $description = get_bloginfo('description', 'display');
+                            if ($description || is_customize_preview()) : ?>
+                                <p class="site-description"><?php echo esc_html($description); /* WPCS: xss ok. */ ?></p>
+                                <?php
+                            endif; ?>
+                        </div>
+                    </div>
+                </div><!-- .site-branding -->
+            <br /><br />
         	<nav id="navigation-principale" role="navigation">
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                 <h4><?php bloginfo( 'description' ); ?></h4>
 		       <?php wp_nav_menu( array( 'theme_location' => 'menu-principal' ) ); ?>
-		</nav>
+            </nav>
      	</div>
     </div>
     <div class="container">
