@@ -47,10 +47,8 @@
                         </div>
                     </div>
                 </div><!-- .site-branding -->
-            <br /><br />
+            
         	<nav id="navigation-principale" role="navigation">
-                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <h4><?php bloginfo( 'description' ); ?></h4>
 		       <?php wp_nav_menu( array( 'theme_location' => 'menu-principal' ) ); ?>
             </nav>
      	</div>
