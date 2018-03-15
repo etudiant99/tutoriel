@@ -17,10 +17,11 @@ function zero_add_sidebar()
 }
 // add a link to the WP Toolbar
 function custom_toolbar_link($wp_admin_bar) {
+    $accueil = get_home_url();
     $args = array(
         'id' => 'wpbeginner',
         'title' => 'Se connecter', 
-        'href' => 'http://localhost/tutoriel/wp-login.php', 
+        'href' => $accueil.'/wp-login.php', 
         'meta' => array(
             'class' => 'wpbeginner', 
             'title' => 'Search WPBeginner Tutorials'

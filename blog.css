@@ -29,6 +29,9 @@ a {color:#DDAA88}
   color:#FF9090;
   font-size:24px;
 }
+#main {
+    min-height: 360px;
+}
 .content {
   display:inline-block;
   width:650px;
@@ -168,4 +171,11 @@ footer {
 
 svg .alt-bgcolor {
     fill: #ffbb3f;
+}
+#wpbeginner {
+    text-align: right;
+    float: right;
+}
+.wpbeginner {
+    float: right;
 }
