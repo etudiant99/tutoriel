@@ -315,16 +315,17 @@ function my_updated_messages( $messages ) {
 }
 add_filter( 'post_updated_messages', 'my_updated_messages' );
 
-function my_contextual_help( $contextual_help, $screen_id, $screen ) { 
-  if ( 'automobile' == $screen->id ) {
+function my_contextual_help( $contextual_help, $screen_id, $screen ) {
+
+  if ( 'automobiles' == $screen->id ) {
 
     $contextual_help = '<h2>Automobiles</h2>
-    <p>Les automobiles montrent les détails des articles que nous vendons sur le site Web. Vous pouvez en voir une liste dans l\'ordre chronologique inverse - la dernière que nous avons ajoutée est la première.</p> 
+    <p>Les automobiles montrent les détails des articles que nous vendons sur le site Web. Vous pouvez en voir une liste dans l\'ordre chronologique inverse - la dernière que nous avons ajoutée est la première de la liste.</p> 
     <p>Vous pouvez afficher / modifier les détails de chaque automobile en cliquant sur son nom, ou vous pouvez effectuer des actions groupées en utilisant le menu déroulant et en sélectionnant plusieurs éléments.</p>';
 
-  } elseif ( 'edit-automobile' == $screen->id ) {
+  } elseif ( 'edit-automobiles' == $screen->id ) {
 
-    $contextual_help = '<h2>Modification d\' automobiles</h2>
+    $contextual_help = '<h2>Modification de automobiles</h2>
     <p>Cette page vous permet d\'afficher / modifier les détails de l\'automobile. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés (marque de l\'automobile, modèle, etc) et <strong> ne pas </ strong> ajouter ces détails à la description de l\'automobile.</p>';
 
   }
