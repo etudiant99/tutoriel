@@ -29,7 +29,7 @@ get_header(); ?>
 			/* Start the Loop */
 			while ( $automobiles->have_posts() ) : the_post();
                 $automobiles->the_post();?>
-                <h1><?php the_title() ?></h1>
+                <h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ?></a></h1>
                 <div class='content'>
                     <?php the_content() ?>
                 </div><?php

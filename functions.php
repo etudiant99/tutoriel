@@ -56,7 +56,7 @@ function wpm_custom_post_type() {
 		'update_item'         => __( 'Modifier une automobile'),
 		'search_items'        => __( 'Rechercher une automobile'),
 		'not_found'           => __( 'Non trouvée'),
-		'not_found_in_trash'  => __( 'Non trouvée dans la corbeille'),
+		'not_found_in_trash'  => __( 'Non trouvée dans la corbeille')
 	);
 	
 	// On peut définir ici d'autres options pour notre custom post type
@@ -67,7 +67,7 @@ function wpm_custom_post_type() {
 		'labels'              => $labels,
         'menu_position' => 3,
 		// On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-		'supports'            => array( 'title', 'editor','link', 'author', 'thumbnail', 'revisions', 'custom-fields', ),
+		'supports'            => array( 'title', 'editor','link', 'author' ),
 		/* 
 		* Différentes options supplémentaires
 		*/	
@@ -85,8 +85,6 @@ function wpm_custom_post_type() {
 }
 
 add_action( 'init', 'wpm_custom_post_type', 0 );
-
-
 
 add_action( 'init', 'wpm_add_taxonomies', 0 );
 
@@ -107,7 +105,7 @@ function wpm_add_taxonomies() {
 		'add_new_item'     				=> __( 'Ajouter une nouvelle marque'),
 		'new_item_name'     			=> __( 'Valeur de la nouvelle marque'),
 		'separate_items_with_commas'	=> __( 'Séparer les marques avec une virgule'),
-		'menu_name'         => __( 'Marque'),
+		'menu_name'         => __( 'Marque')
 	);
 
 	$args_marque = array(
@@ -138,7 +136,7 @@ function wpm_add_taxonomies() {
 		'add_or_remove_items'        => __( 'Ajouter ou supprimer un modèle'),
 		'choose_from_most_used'      => __( 'Choisir parmi les plus utilisés'),
 		'not_found'                  => __( 'Pas de modèles trouvés'),
-		'menu_name'                  => __( 'Modèles'),
+		'menu_name'                  => __( 'Modèles')
 	);
 
 	$args_modeles = array(
@@ -169,7 +167,7 @@ function wpm_add_taxonomies() {
 		'add_or_remove_items'        => __( 'Ajouter ou supprimer une année'),
 		'choose_from_most_used'      => __( 'Choisir parmi les années les plus utilisées'),
 		'not_found'                  => __( 'Pas d\' année trouvées'),
-		'menu_name'                  => __( 'Années'),
+		'menu_name'                  => __( 'Années')
 	);
 
 	$args_annees = array(
@@ -199,7 +197,7 @@ function wpm_add_taxonomies() {
 		'add_or_remove_items'        => __( 'Ajouter ou supprimer un type'),
 		'choose_from_most_used'      => __( 'Choisir parmi les types les plus utilisés'),
 		'not_found'                  => __( 'Pas de type trouvés'),
-		'menu_name'                  => __( 'Types'),
+		'menu_name'                  => __( 'Types')
 	);
 
 	$args_types = array(
@@ -209,7 +207,7 @@ function wpm_add_taxonomies() {
 		'show_ui'               => true,
 		'show_admin_column'     => true,
 		'query_var'             => true,
-		'rewrite'               => array( 'slug' => 'types' ),
+		'rewrite'               => array( 'slug' => 'types' )
 	);
 
 	register_taxonomy( 'types', 'automobiles', $args_types );
@@ -229,7 +227,7 @@ function wpm_add_taxonomies() {
 		'add_or_remove_items'        => __( 'Ajouter ou supprimer une option'),
 		'choose_from_most_used'      => __( 'Choisir parmi les options les plus utilisées'),
 		'not_found'                  => __( 'Pas d\'options trouvées'),
-		'menu_name'                  => __( 'Options'),
+		'menu_name'                  => __( 'Options')
 	);
 
 	$args_options = array(
@@ -239,7 +237,7 @@ function wpm_add_taxonomies() {
 		'show_ui'               => true,
 		'show_admin_column'     => true,
 		'query_var'             => true,
-		'rewrite'               => array( 'slug' => 'options' ),
+		'rewrite'               => array( 'slug' => 'options' )
 	);
 
 	register_taxonomy( 'options', 'automobiles', $args_options );
@@ -259,7 +257,7 @@ function wpm_add_taxonomies() {
 		'add_or_remove_items'        => __( 'Ajouter ou supprimer un pneu'),
 		'choose_from_most_used'      => __( 'Choisir parmi les pneus les plus utilisés'),
 		'not_found'                  => __( 'Pas de pneus trouvés'),
-		'menu_name'                  => __( 'Pneus'),
+		'menu_name'                  => __( 'Pneus')
 	);
 
 	$args_pneus = array(
@@ -269,7 +267,7 @@ function wpm_add_taxonomies() {
 		'show_ui'               => true,
 		'show_admin_column'     => true,
 		'query_var'             => true,
-		'rewrite'               => array( 'slug' => 'pneus' ),
+		'rewrite'               => array( 'slug' => 'pneus' )
 	);
 
 	register_taxonomy( 'pneus', 'automobiles', $args_pneus );
@@ -297,13 +295,14 @@ function wpc_cpt_in_search($query) {
 add_action('pre_get_posts','wpc_cpt_in_search');
 
 function my_updated_messages( $messages ) {
+    
   global $post, $post_ID;
   $messages['automobiles'] = array(
     0 => '', 
     1 => sprintf( __('automobile mis à jour <a href="%s">Voir l\'automobile</a>'), esc_url( get_permalink($post_ID) ) ),
     2 => __('Champ personnalisé mis à jour.'),
     3 => __('Champ personnalisé supprimé.'),
-    4 => __('automobile mis à jour.'),
+    4 => __('Automobile mis à jour.'),
     5 => isset($_GET['revision']) ? sprintf( __('Automobile restauré à la révision de %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
     6 => sprintf( __('Automobile publiée <a href="%s">Voir l\'automobile</a>'), esc_url( get_permalink($post_ID) ) ),
     7 => __('Automobile enregistrée'),
@@ -316,19 +315,100 @@ function my_updated_messages( $messages ) {
 add_filter( 'post_updated_messages', 'my_updated_messages' );
 
 function my_contextual_help( $contextual_help, $screen_id, $screen ) {
-
-  if ( 'automobiles' == $screen->id ) {
-
-    $contextual_help = '<h2>Automobiles</h2>
-    <p>Les automobiles montrent les détails des articles que nous vendons sur le site Web. Vous pouvez en voir une liste dans l\'ordre chronologique inverse - la dernière que nous avons ajoutée est la première de la liste.</p> 
-    <p>Vous pouvez afficher / modifier les détails de chaque automobile en cliquant sur son nom, ou vous pouvez effectuer des actions groupées en utilisant le menu déroulant et en sélectionnant plusieurs éléments.</p>';
-
-  } elseif ( 'edit-automobiles' == $screen->id ) {
-
-    $contextual_help = '<h2>Modification de automobiles</h2>
-    <p>Cette page vous permet d\'afficher / modifier les détails de l\'automobile. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés (marque de l\'automobile, modèle, etc) et <strong> ne pas </ strong> ajouter ces détails à la description de l\'automobile.</p>';
-
-  }
+    $screen = get_current_screen();;
+    //var_dump($screen);
+        
+    if ( 'edit-automobiles' == $screen->id ){
+        $screen->add_help_tab( array(
+            'id'		=> 'overview',
+            'title'		=> __('Vue d\'ensemble'),
+            'content'	=>
+                '<p>' . __('Cet écran donne accès à toutes vos automobiles. Vous pouvez personnaliser l\'affichage de cet écran en fonction de votre flux de travail. ').'</p>'
+        ) );
+        $screen->add_help_tab( array(
+            'id' => 'screen-content',
+            'title' => 'Contenu de l\'écran',
+            'content' =>
+                '<p>' . __('Vous pouvez personnaliser l\'affichage du contenu de cet écran de plusieurs façons: ').'</p>'.
+                    '<ul>' .
+                        '<li>' . __('You can hide/display columns based on your needs and decide how many posts to list per screen using the Screen Options tab.') . '</li>'.
+                        '<li>' .  __( 'You can filter the list of posts by post status using the text links above the posts list to only show posts with that status. The default view is to show all posts.' ) . '</li>'.
+                        '<li>' .  __('You can view posts in a simple title list or with an excerpt using the Screen Options tab.') . '</li>'.
+                        '<li>' .  __('You can refine the list to show only posts in a specific category or from a specific month by using the dropdown menus above the posts list. Click the Filter button after making your selection. You also can refine the list by clicking on the post author, category or tag in the posts list.').  '</li>'.
+                        '<li>' . __('You can refine the list to show only posts in a specific category or from a specific month by using the dropdown menus above the posts list. Click the Filter button after making your selection. You also can refine the list by clicking on the post author, category or tag in the posts list.') . '</li>' .
+                    '</ul>'
+        ) );
+        $screen->add_help_tab( array(
+            'id'		=> 'action-links',
+            'title'		=> __('Available Actions'),
+            'content'	=>
+                '<p>' . __('Hovering over a row in the posts list will display action links that allow you to manage your post. You can perform the following actions:') . '</p>' .
+                    '<ul>' .
+                        '<li>' . __('<strong>Edit</strong> takes you to the editing screen for that post. You can also reach that screen by clicking on the post title.') . '</li>' .
+                        '<li>' . __('<strong>Quick Edit</strong> provides inline access to the metadata of your post, allowing you to update post details without leaving this screen.') . '</li>' .
+                        '<li>' . __('<strong>Trash</strong> removes your post from this list and places it in the trash, from which you can permanently delete it.') . '</li>' .
+                        '<li>' . __('<strong>Preview</strong> will show you what your draft post will look like if you publish it. View will take you to your live site to view the post. Which link is available depends on your post&#8217;s status.') . '</li>' .
+                    '</ul>'
+        ) );
+        $screen->add_help_tab( array(
+            'id'		=> 'bulk-actions',
+            'title'		=> __('Bulk Actions'),
+            'content'	=>
+                '<p>' . __('You can also edit or move multiple posts to the trash at once. Select the posts you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply.') . '</p>' .
+				'<p>' . __('When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected posts at once. To remove a post from the grouping, just click the x next to its name in the Bulk Edit area that appears.') . '</p>'
+        ) );
+    }elseif ( 'automobiles' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Ajouter',
+            'title'     => 'Ajouter',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails de l\'automobile. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }elseif ( 'edit-marques' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Marque',
+            'title'     => 'Marque',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails de la marque. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }elseif ( 'edit-modeles' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Modeles',
+            'title'     => 'Modèles',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails du modèle. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }elseif ( 'edit-abnees' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Annees',
+            'title'     => 'Années',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails de l\'année. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }elseif ( 'edit-types' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Types',
+            'title'     => 'Types',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails du type de automobiles. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }elseif ( 'edit-options' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Options',
+            'title'     => 'Options',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails des options. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }elseif ( 'edit-pneus' == $screen->id ) {
+        $screen->add_help_tab( array(
+            'id'        => 'Pneus',
+            'title'     => 'Pneus',
+            'content'  =>
+                '<p>Cette page vous permet d\'afficher / modifier les détails du pneu. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
+        ) );
+    }
+  
   return $contextual_help;
 }
 add_action( 'contextual_help', 'my_contextual_help', 10, 3 );
+
