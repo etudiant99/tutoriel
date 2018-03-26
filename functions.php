@@ -1,20 +1,4 @@
 <?php
-register_nav_menus( array( 
-        'menu-principal' => 'Menu principal'
-) );
-add_action('widgets_init','zero_add_sidebar');
-function zero_add_sidebar()
-{
-    register_sidebar(array(
-        'id' => 'my_custom_zone',
-        'name' => 'Zone de droite',
-        'description' => 'Apparait à droite du site',
-        'before_widget' => '<div>',
-        'after_widget' => "</div>",
-        'before_title' => '<h2 class="widgettitle">',
-        'after_title' => "</h2>"
-    ));
-}
 // add a link to the WP Toolbar
 function custom_toolbar_link($wp_admin_bar) {
     $accueil = get_home_url();
@@ -32,6 +16,25 @@ function custom_toolbar_link($wp_admin_bar) {
 }
 add_action('admin_bar_menu', 'custom_toolbar_link', 999);
 show_admin_bar(true);
+
+add_action('widgets_init','zero_add_sidebar');
+function zero_add_sidebar()
+{
+    register_sidebar(array(
+        'id' => 'my_custom_zone',
+        'name' => 'Zone de droite',
+        'description' => 'Apparait à droite du site',
+        'before_widget' => '<div>',
+        'after_widget' => "</div>",
+        'before_title' => '<h2 class="widgettitle">',
+        'after_title' => "</h2>"
+    ));
+}
+    
+register_nav_menus( array( 
+        'menu-principal' => 'Menu principal'
+) );
+
 
 /*
 * On utilise une fonction pour créer notre custom post type 'Automobiles'
@@ -284,16 +287,6 @@ function wpc_cpt_in_home($query) {
 
 add_action('pre_get_posts','wpc_cpt_in_home');
 
-function wpc_cpt_in_search($query) {
-  if (! is_admin() && $query->is_main_query()) {
-    if ($query->is_search) {
-      $query->set('post_type', array('post', 'automobiles'));
-    }
-  }
-}
-
-add_action('pre_get_posts','wpc_cpt_in_search');
-
 function my_updated_messages( $messages ) {
     
   global $post, $post_ID;
@@ -378,7 +371,7 @@ function my_contextual_help( $contextual_help, $screen_id, $screen ) {
             'content'  =>
                 '<p>Cette page vous permet d\'afficher / modifier les détails du modèle. Veuillez vous assurer de remplir les cases disponibles avec les détails appropriés et <strong> ne pas </strong> ajouter ces détails à la description de l\'automobile.</p>'
         ) );
-    }elseif ( 'edit-abnees' == $screen->id ) {
+    }elseif ( 'edit-annees' == $screen->id ) {
         $screen->add_help_tab( array(
             'id'        => 'Annees',
             'title'     => 'Années',
@@ -412,3 +405,12 @@ function my_contextual_help( $contextual_help, $screen_id, $screen ) {
 }
 add_action( 'contextual_help', 'my_contextual_help', 10, 3 );
 
+add_action('pre_get_posts','wpc_cpt_in_home');
+
+function wpc_cpt_in_search($query) {
+  if (! is_admin() && $query->is_main_query()) {
+    if ($query->is_search) {
+      $query->set('post_type', array('post', 'automobiles'));
+    }
+  }
+}

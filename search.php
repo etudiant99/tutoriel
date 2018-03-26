@@ -1,4 +1,5 @@
-            <?php get_header(); ?> <!-- ouvrir header,php -->
+<?php get_header(); ?> <!-- ouvrir header,php -->
+    <div id="main" class="row">
             <div class="col-sm-8">
                 <?php if(have_posts()) : ?>
                     <?php while(have_posts()) : the_post(); ?>
@@ -12,7 +13,11 @@
                         </div>
                     </div>
                     <?php endwhile; ?>
+                    <?php else : ?>
+                        <h2 class="center">Aucun article trouvé. Essayer une autre recherche ?</h2>
+                        <?php include (TEMPLATEPATH . '/searchform.php'); ?>
                 <?php endif; ?>
             </div>
             <?php get_sidebar(); ?>
-            <?php get_footer(); ?>
+    </div>
+    <?php get_footer(); ?>

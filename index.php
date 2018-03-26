@@ -1,26 +1,32 @@
-<?php get_header(); ?>
-	<div id="main" class="row">
-		<div class="col-sm-8 blog-main">
-			<?php
-            $args = array(
-                'post_type' => 'automobiles'
-                
-            );
-            $automobiles = new WP_Query( $args );
-            if( $automobiles->have_posts() ) {
-                while( $automobiles->have_posts() ) {
-                    $automobiles->the_post();?>
-                    <div class='content'>
-                        <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-                        par <?php the_author(); ?>
-                    </div><?php
-                }
-            }
-            else {
-                echo 'Oh oh rien n\' est enttré!';
-            }
-			?>
-        </div> <!-- /.blog-main -->
-		<?php get_sidebar(); ?>
-	</div> <!-- /.row -->
-<?php get_footer(); ?>
+<?php get_header(); ?> <!-- ouvrir header,php -->
+    <div id="main" class="row">
+            <div class="col-sm-8">
+                <?php if(have_posts()) : ?>
+                    <?php while(have_posts()) : the_post(); ?>
+                    <span id="spancache"><?php $monlien = the_ID(); ?></span>
+                    <div class="post" id="post-<?php the_ID(); ?>">
+                        <h2><a href="<?php the_permalink($monlien); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                        <p class="postmetadata">
+                            <?php the_time('j F Y') ?> par <?php the_author() ?> | Catégorie: <?php the_category(', ') ?>
+                            <?php if ( comments_open() ) : ?>
+                                | <?php comments_popup_link('Pas de commentaires', '1 Commentaire', '% Commentaires'); ?>
+                            <?php endif; ?>
+                            <?php edit_post_link('Editer', ' &#124; ', ''); ?>
+                        </p>
+                        <div class="post_content">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                    <?php endwhile; ?>
+                    <div class="navigation">
+                        <?php posts_nav_link(' - ','page suivante','page pr&eacute;c&eacute;dente'); ?>
+                    </div>
+                    <?php else : ?>
+                        <h2>Oooopppsss...</h2>
+                        <p>Désolé, mais vous cherchez quelque chose qui ne se trouve pas ici .</p>
+                        <?php include (TEMPLATEPATH . "/searchform.php"); ?>
+                <?php endif; ?>
+            </div>
+            <?php get_sidebar(); ?>
+    </div>
+    <?php get_footer(); ?>
