@@ -5,11 +5,14 @@
                         <div class="post" id="post-<?php the_ID(); ?>">
                             <h2><?php the_title(); ?></h2>
                             <p class="postmetadata">
-                                <?php the_time('j F Y') ?> par <?php the_author() ?> | Catégorie: <?php the_category(', ') ?>
+                                <?php the_time('j F Y') ?> par <?php the_author() ?> Denis
                                 <?php edit_post_link('Editer', ' &#124; ', ''); ?>
                             </p>
                             <div class="post_content">
-                                <?php the_content(); ?>
+                                <?php the_terms( $post->ID, 'marques', 'Marque : ' ); ?>
+                                <?php the_terms( $post->ID, 'modeles', 'Modèle : ' ); ?>
+                                <?php the_terms( $post->ID, 'annees', 'Année : ' ); ?>
+                                <?php the_terms( $post->ID, 'pneus', 'Pneu : ' ); ?>
                             </div>
                         </div>
                         <div class="comments-template">

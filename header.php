@@ -39,7 +39,12 @@
                 </div><!-- .site-branding -->
             
         	<nav id="navigation-principale" role="navigation">
-		       <?php wp_nav_menu( array( 'theme_location' => 'menu-principal' ) ); ?>
+		          <?php
+                  wp_nav_menu( array(
+                        'theme_location' => 'menu-principal',
+                        'menu_class'     => 'primary-menu',
+				  ) );
+                  ?>
             </nav>
      	</div>
     </div>

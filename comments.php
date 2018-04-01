@@ -21,7 +21,7 @@ $oddcomment = 'alt';
 
 <div class="cadre_commentaires">
 <?php if ($comments) : ?>
-	<h3 id="comments"><?php comments_number('Pas de commentaire', 'Un commentaire', '% commentaires' );?> pour &#8220;<?php the_title(); ?>&#8221;</h3>
+	<h3 id="comments"><?php comments_number('Pas de commentaire', 'Un commentaire', '% commentaires','','' );?> pour &#8220;<?php the_title(); ?>&#8221;</h3>
 
 <ol class="commentlist">
 <?php foreach ($comments as $comment) : ?>
@@ -29,7 +29,8 @@ $oddcomment = 'alt';
 	<li class="<?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
 
 <div class="commentmetadata">
-<strong><?php comment_author_link() ?></strong>, <?php _e('le'); ?> <a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date('j F, Y') ?> <?php _e('&agrave;');?> <?php comment_time() ?></a> <?php _e('a dit&#58;'); ?> <?php edit_comment_link('Edit Comment','',''); ?>
+<strong><?php comment_author_link() ?></strong>, <?php _e('le'); ?> <a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date('j F, Y') ?> <?php _e('&agrave;');?> <?php comment_time() ?></a> <?php _e(', a dit&#58;'); ?><br />
+<?php edit_comment_link('Editer commentaire','',''); ?>
  		<?php if ($comment->comment_approved == '0') : ?>
 		<em><?php _e('Votre commentaire est en cours de modération'); ?></em>
  		<?php endif; ?>
@@ -53,7 +54,7 @@ $oddcomment = 'alt';
 	<?php else : // comments are closed ?>
 
 	<!-- If comments are closed. -->
-<p class="nocomments">Les commentaires sont fermés !</p>
+<p class="nocomments"></p>
 
 	<?php endif; ?>
 <?php endif; ?>
