@@ -7,7 +7,7 @@
 }
 body {background:#F5F5F5;}
 h1,h2 {color:#555;}
-a {color:#DDAA88}
+
 #spancache {
     display: none;
 }
@@ -107,17 +107,6 @@ footer {
     background: #377bb5;
 }
 
-#navigation-principale li {
-    position: relative;
-    top: 130px;
-    left: 220px;
-    display: inline-block;
-    padding: 10px;
-    font-weight: 500;	
-}
-#navigation-principale li a {
-    color: #fff;
-}
 .post {
     background-color: #F5F5F5;
 }
@@ -192,4 +181,106 @@ svg .alt-bgcolor {
 }
 .wpbeginner {
     float: right;
+}
+.primary-menu {
+		display: inline-block !important;
+		text-align: left;
+}
+.main-navigation {
+	clip: auto !important;
+	color: #000;
+	display: block;
+	font-size: 12px;
+	height: auto;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+/* Menu Navigation */
+#navigation-principale li {
+    position: relative;
+    top: 130px;
+    left: 220px;
+    display: inline-block;
+    padding: 10px;
+    font-weight: 500;	
+}
+#navigation-principale li a {
+    color: #fff;
+}
+.main-navigation {
+    position: relative;
+    top: 130px;
+    left: 220px;
+}
+nav {
+    display: block;
+}
+#nav-above {
+	padding: 24px 0;
+	padding: 1.714285714rem 0;
+}
+#nav-above {
+	display: none;
+}
+.paged #nav-above {
+	display: block;
+}
+.nav-previous,
+.previous-image {
+	float: left;
+	width: 50%;
+}
+.nav-next,
+ol,
+ul {
+	list-style: none;
+}
+a {
+	outline: none;
+	color: #21759b;
+}
+a:hover {
+	color: #0f3647;
+}
+.main-navigation li a,
+.main-navigation li {
+    display: inline-block;
+    text-decoration: none;
+}
+.main-navigation li a {
+    border-bottom: 0;
+    color: white;
+    line-height: 3.692307692;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.main-navigation li {
+    margin: 0 40px 0 0;
+    margin: 0 2.857142857rem 0 0;
+    position: relative;
+}
+.main-navigation li ul {
+    background-color: #377bb5;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+.main-navigation ul li:hover > ul,
+.main-navigation ul li:focus > ul,
+.main-navigation .focus > ul {
+    border-left: 0;
+    clip: inherit;
+    overflow: inherit;
+    height: inherit;
+    width: inherit;
 }

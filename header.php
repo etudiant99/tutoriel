@@ -37,14 +37,9 @@
                         </div>
                     </div>
                 </div><!-- .site-branding -->
-            
-        	<nav id="navigation-principale" role="navigation">
-		          <?php
-                  wp_nav_menu( array(
-                        'theme_location' => 'menu-principal',
-                        'menu_class'     => 'primary-menu',
-				  ) );
-                  ?>
+                
+        	<nav id="site-navigation" class="main-navigation" role="navigation">
+		          <?php wp_nav_menu( array('theme_location' => 'menu-principal','menu_class' => 'primary-menu') ); ?>
             </nav>
      	</div>
     </div>

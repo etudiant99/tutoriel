@@ -1,5 +1,5 @@
         <?php get_header(); ?> <!-- ouvrir header,php -->
-            <div id="main" class="col-sm-8">
+            <div id="main" class="content-full-width">
                 <?php if(have_posts()) : ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <div class="post" id="post-<?php the_ID(); ?>">
@@ -21,5 +21,4 @@
                         <p>Désolé, aucun article ne correspond à vos critères.</p>
                 <?php endif; ?>
             </div>
-            <?php get_sidebar(); ?>
             <?php get_footer(); ?>
