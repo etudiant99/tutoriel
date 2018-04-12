@@ -128,3 +128,9 @@ function add_my_archive_menu_classes( $classes , $item, $args ) {
     }
     return $classes;
 }
+
+function sf_check_rememberme(){
+	global $rememberme;
+	$rememberme = 1;
+}
+add_action("login_form", "sf_check_rememberme");

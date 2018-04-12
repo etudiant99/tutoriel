@@ -9,6 +9,9 @@
                                 <?php edit_post_link('Editer', ' &#124; ', ''); ?>
                             </p>
                             <div class="post_content">
+                                <?php the_content(); ?>
+                            </div>
+                            <div class="post_content">
                                 <?php the_terms( $post->ID, 'marques', 'Marque : ' ); ?>
                                 <?php the_terms( $post->ID, 'modeles', 'Modèle : ' ); ?>
                                 <?php the_terms( $post->ID, 'annees', 'Année : ' ); ?>
